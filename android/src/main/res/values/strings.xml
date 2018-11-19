@@ -4,5 +4,5 @@
     <string name="rnsb_content_authority" translatable="false">com.fnp.reactnativesyncadapter.provider</string>
     <string name="rnsb_default_timeout" translatable="false">600000</string>
     <string name="rnsb_allow_foreground">true</string>
-    <string name="rnsb_user_visible">false</string>
+    <string name="rnsb_user_visible" translatable="false">false</string>
 </resources>
