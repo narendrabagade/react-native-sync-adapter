@@ -12,6 +12,8 @@ import android.content.SyncResult;
 import android.os.Build;
 import android.os.Bundle;
 
+import com.facebook.react.HeadlessJsTaskService;
+
 class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     public SyncAdapter(Context context, boolean autoInitialize) {
@@ -22,6 +24,7 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
         Intent service = new Intent(getContext(), HeadlessService.class);
         getContext().startService(service);
+        HeadlessJsTaskService.acquireWakeLockNow(getContext());
     }
 
     /**
