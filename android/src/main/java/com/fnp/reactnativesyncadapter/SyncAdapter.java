@@ -22,9 +22,13 @@ class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     @Override
     public void onPerformSync(Account account, Bundle extras, String authority, ContentProviderClient provider, SyncResult syncResult) {
-        Intent service = new Intent(getContext(), HeadlessService.class);
-        getContext().startService(service);
-        HeadlessJsTaskService.acquireWakeLockNow(getContext());
+        try {
+            Intent service = new Intent(getContext(), HeadlessService.class);
+            getContext().startService(service);
+            HeadlessJsTaskService.acquireWakeLockNow(getContext());
+        } catch (IllegalStateException e) {
+            System.out.println("***NNN IllegalStateException in starting service in onPerformSync operation");
+        }
     }
 
     /**
